@@ -72,14 +72,21 @@ function hoursToMinutes(array) {
     timeArray[i] = min;
   }
 
-  const newArr = array.map((movie, i) => {return { ...movie, duration: timeArray[i] }});
+  const newArr = array.map((movie, i) => { return { ...movie, duration: timeArray[i] } });
 
   return newArr;
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-
+function bestFilmOfYear(array, year) {
+  const yearArray = array.filter(movie => movie.year === year);
+  const yearArraySorted = yearArray.sort((a, b) => {
+    if (a.score > b.score)
+      return -1;
+    if (a.score < b.score)
+      return 1;
+  })
+  return yearArraySorted.slice(0, 1)
 }
 
 
